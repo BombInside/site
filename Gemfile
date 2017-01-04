@@ -13,11 +13,13 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'foundation-rails' #css framework
+gem 'rails_admin'
 group :development, :test do
   gem 'byebug', platform: :mri
 end
 
 group :development do
+  gem 'better_errors'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
