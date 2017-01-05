@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,12 +9,47 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-  </head>
 
+    <!-- TOASTR  -->
+    <% unless flash.empty?  %>
+      <script type="text/javascript">
+        <% flash.each do |f|  %>
+          <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info')  %>
+          toastr['<%= type %>']('<%= f[1] %>');
+        <% end  %>
+      </script>
+    <% end  %>
+    <!-- END TOASTR  -->
+  </head>
   <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="/" class="navbar-brand">Brand</a>
+      </div>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Page 3</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div>
+    </div>
+  </nav>
     <p class="notice" ><%= notice %> </p>
     <p class="alert" ><%= alert %> </p>
     <%= yield %>
-
+    <h1>lol</h1>
   </body>
 </html>

@@ -12,10 +12,12 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem 'foundation-rails' #css framework
+gem 'bootstrap-sass' #css framework
 gem 'rails_admin' #admin interface
 gem 'devise' #user auth gem
 gem 'cancancan' #user roles
+gem 'rolify' #add roles to User
+gem 'toastr-rails' #flash nofities
 group :development, :test do
   gem 'byebug', platform: :mri
 end
