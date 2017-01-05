@@ -13,8 +13,9 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'foundation-rails' #css framework
-gem 'rails_admin'
-gem 'devise'
+gem 'rails_admin' #admin interface
+gem 'devise' #user auth gem
+gem 'cancancan' #user roles
 group :development, :test do
   gem 'byebug', platform: :mri
 end
