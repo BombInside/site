@@ -18,6 +18,7 @@ gem 'devise' #user auth gem
 gem 'cancancan' #user roles
 gem 'rolify' #add roles to User
 gem 'toastr-rails' #flash nofities
+gem 'yt' #youtube API connectop 4 YouTube playlist
 group :development, :test do
   gem 'byebug', platform: :mri
 end
