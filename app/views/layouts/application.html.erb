@@ -9,6 +9,8 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+  </head>
+  <body>
 
     <!-- TOASTR  -->
     <% unless flash.empty?  %>
@@ -20,8 +22,6 @@
       </script>
     <% end  %>
     <!-- END TOASTR  -->
-  </head>
-  <body>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -40,16 +40,25 @@
             <li><a href="#">Page 3</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown"><%= current_user.username.to_s %><span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#"> <span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                      <% if current_user.admin?  %>
+                    <li><%= link_to rails_admin.dashboard_path do %><span class="glyphicon glyphicon-dashboard"></span> Admin Dashboard<% end %></li>
+                      <% end %>
+                    <li><%= link_to destroy_user_session_path, :method => :delete do %><span class="glyphicon glyphicon-log-out"></span> Exit<% end %></li>
+                  </ul>
+                </li>
 
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <% else %>
+              <li><%= link_to new_user_session_path do %><span class="glyphicon glyphicon-user"></span>Login<% end %></li>
+            <% end %>
           </ul>
         </div>
     </div>
   </nav>
-    <p class="notice" ><%= notice %> </p>
-    <p class="alert" ><%= alert %> </p>
     <%= yield %>
-    <h1>lol</h1>
   </body>
 </html>
